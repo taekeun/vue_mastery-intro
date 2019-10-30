@@ -12,12 +12,13 @@
 <div id="app">
   <div class="product">
     <div class="product-image">
-      <img :src="image">
+      <img :src="image" />
     </div>
+
     <div class="product-info">
       <h1>{{ product }}</h1>
-      <p v-show="inStock">In Stock</p>
-      <p v-if="onSale">On Sale!</p>
+      <p v-if="inStock">In Stock</p>
+      <p v-else>Out of Stock</p>
     </div>
   </div>
 </div>
