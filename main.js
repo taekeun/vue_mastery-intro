@@ -23,9 +23,12 @@ var app = new Vue({
     addToCart() {
       this.cart += 1
     },
+    removeFromCart() {
+      if(this.cart > 0)
+        this.cart -= 1
+    },
     updateProduct(variantImage) {
       this.image = variantImage
-
-    }
+    },
   }
 });
