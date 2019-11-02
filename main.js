@@ -28,6 +28,12 @@ var app = new Vue({
       this.selectedVariant = index
       console.log(index)
     },
+    testMethods() {
+      console.log('testMethods')
+    },
+    hello() {
+      console.log('hello')
+    }
   },
   computed: {
     title() {
@@ -35,6 +41,10 @@ var app = new Vue({
     },
     image() {
       return this.variants[this.selectedVariant].variantImage
+    },
+    testComputed() {
+      console.log('testComputed')
     }
+
   }
 });
