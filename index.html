@@ -19,6 +19,7 @@
       <h1>{{ title }}</h1>
       <p v-if="inStock">In Stock</p>
       <p v-else :class="{outOfStock: !inStock}">Out of Stock</p>
+      <p>{{ saleMessage }}</p>
 
       <ul>
         <li v-for="detail in details">{{ detail }}</li>
@@ -44,8 +45,6 @@
 
     </div>
   </div>
-  <div>testMethods : {{ testMethods() }}</div>
-  <div>computedMethods : {{ testComputed }}</div>
 </div>
 
 
