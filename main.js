@@ -15,7 +15,7 @@ Vue.component('product', {
         <h1>{{ title }}</h1>
         <p v-if="inStock">In Stock</p>
         <p v-else :class="{outOfStock: !inStock}">Out of Stock</p>
-        <p>User is premium: {{ premium }}</p>
+        <p>Shipping: {{ shipping }}</p>
 
         <ul>
           <li v-for="detail in details">{{ detail }}</li>
@@ -84,6 +84,12 @@ Vue.component('product', {
     },
     inStock() {
       return this.variants[this.selectedVariant].variantQuantity > 0
+    },
+    shipping() {
+      if(this.premium) {
+        return "Free"
+      }
+      return 2.99
     }
   }
 })
