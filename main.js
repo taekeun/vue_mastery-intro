@@ -48,9 +48,7 @@ Vue.component('product', {
         >Add to cart
         </button>
 
-        <div class="cart">
-          <p>Cart({{ cart }})</p>
-        </div>
+        
 
       </div>
     </div>  
@@ -75,7 +73,6 @@ Vue.component('product', {
           variantQuantity: 0
         }
       ],
-      cart: 0,
       onSale: true
     }
   },
@@ -110,6 +107,7 @@ Vue.component('product', {
 var app = new Vue({
   el: '#app',
   data: {
-    premium: true
+    premium: true,
+    cart: 0,
   }
 });
