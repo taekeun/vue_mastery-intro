@@ -1,3 +1,14 @@
+Vue.component('product-review', {
+  template: `
+    <input v-model="name"">
+  `,
+  data() {
+    return {
+      name: null
+    }
+  }
+})
+
 Vue.component('product', {
   props: {
     premium: {
