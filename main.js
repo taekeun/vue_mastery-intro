@@ -27,7 +27,21 @@ Vue.component('product-review', {
   `,
   data() {
     return {
-      name: null
+      name: null,
+      review: null,
+      rating: null
+    }
+  },
+  methods: {
+    onSubmit() {
+      let productReview = {
+        name: this.name,
+        review: this.review,
+        rating: this.rating
+      }
+      this.name = null
+      this.review = null
+      this.rating = null
     }
   }
 })
