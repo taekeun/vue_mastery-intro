@@ -1,18 +1,3 @@
-Vue.component('product-details', {
-  props: {
-    details: {
-      type: Array,
-      required: true
-    }
-  },
-  template: `
-    <ul>
-      <li v-for="detail in details">{{ detail }}</li>
-    </ul>
-  `
-
-})
-
 Vue.component('product', {
   props: {
     premium: {
@@ -32,7 +17,9 @@ Vue.component('product', {
         <p v-else :class="{outOfStock: !inStock}">Out of Stock</p>
         <p>Shipping: {{ shipping }}</p>
 
-        <product-details :details="details"></product-details>
+        <ul>
+          <li v-for="detail in details">{{ detail }}</li>
+        </ul>
 
         <div class="color-box"
              v-for="(variant, index) in variants"
@@ -46,9 +33,6 @@ Vue.component('product', {
                 :disabled="!inStock"
                 :class="{ disabledButton: !inStock }"
         >Add to cart
-        </button>
-        <button @click="removeFromCart"
-        >Remove from cart
         </button>
       </div>
     </div>  
@@ -79,9 +63,6 @@ Vue.component('product', {
   methods: {
     addToCart() {
       this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
-    },
-    removeFromCart() {
-      this.$emit('remove-from-cart', this.variants[this.selectedVariant].variantId)
     },
     updateProduct(index) {
       this.selectedVariant = index
@@ -117,8 +98,5 @@ var app = new Vue({
     updateCart(id) {
       this.cart.push(id)
     },
-    removeItem(id) {
-      this.cart = this.cart.filter(value => value != id)
-    }
   }
 });
