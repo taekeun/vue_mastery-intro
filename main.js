@@ -82,6 +82,27 @@ Vue.component('product-review', {
   }
 })
 
+Vue.component('tabs', {
+  template: `
+    <div class="tab">
+      <span 
+        :class="{activeTab: selectedTab == tab}"
+        v-for="(tab, index) in tabs"
+        @click="selectedTab = tabs[index]"
+      >
+        {{ tab }}
+      </span>
+    </div>
+  `,
+  data()  {
+    return {
+      tabs: ['Reviews', 'Make a Review'],
+      selectedTab: 'Reviews'
+    }
+  }
+
+})
+
 Vue.component('product', {
   props: {
     premium: {
@@ -119,6 +140,8 @@ Vue.component('product', {
         >Add to cart
         </button>
       </div>
+      
+      <tabs></tabs>
       
       <div>
         <h2>Reviews</h2>
