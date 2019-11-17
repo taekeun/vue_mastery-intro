@@ -25,6 +25,11 @@ Vue.component('product-review', {
           <option>1</option>
         </select>
       </p>
+      <p>
+        Would you recommend this product?
+        <input type="radio" id="recommended" name="recommend" v-model="recommend" value=true><label for="recommended">Yes</label>
+        <input type="radio" id="no-recommend" name="recommend" v-model="recommend" value=false><label for="no-recommend">No</label>
+      </p>
       
       <p>
         <input type="submit" value="Submit">
@@ -36,6 +41,7 @@ Vue.component('product-review', {
       name: null,
       review: null,
       rating: null,
+      recommend: null,
       errors: []
     }
   },
@@ -45,12 +51,20 @@ Vue.component('product-review', {
       if(!this.name) this.errors.push("Name required.")
       if(!this.review) this.errors.push("Review required.")
       if(!this.rating) this.errors.push("Rating required.")
+      if(this.recommend == "true") {
+        this.recommend = true
+      } else if(this.recommend == "false") {
+        this.recommend = false
+      } else {
+        this.errors.push("Recommend required.")
+      }
 
       if(this.errors.length <= 0) {
         let productReview = {
           name: this.name,
           review: this.review,
-          rating: this.rating
+          rating: this.rating,
+          recommend: this.recommend
         }
 
         this.$emit('review-submitted', productReview)
@@ -58,6 +72,7 @@ Vue.component('product-review', {
         this.name = null
         this.review = null
         this.rating = null
+        this.recommend = null
       }
     }
   }
@@ -108,6 +123,7 @@ Vue.component('product', {
           <li v-for="review in reviews">
             <p>{{ review.name }}</p>
             <p>Rating: {{ review.rating }}</p>
+            <p>Recommend: {{ review.recommend ? "Yes" : "No" }}</p>
             <p>{{ review.review }}</p>
           </li>
         </ul>
